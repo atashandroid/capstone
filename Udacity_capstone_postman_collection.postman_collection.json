@@ -1,0 +1,807 @@
+{
+	"info": {
+		"_postman_id": "8215c097-8831-4b47-84ff-3e4e5a838b70",
+		"name": "Udacity_capstone_postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assistant_test",
+			"item": [
+				{
+					"name": "/musicians",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains musicians array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.musicians).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/musicians",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains compositions array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.compositions).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/compositions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlkzbUQ0c19Tc3M5VGZXUHdReFgxMCJ9.eyJpc3MiOiJodHRwczovL2F0YXNoLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGY0MzQwNDYxMGE3NjAwNjllYzM3N2MiLCJhdWQiOiJjYXN0aW5nIiwiaWF0IjoxNjI2NjI2Nzg5LCJleHAiOjE2MjY2MzM5ODksImF6cCI6IkZKTUVGaERCTHRzOEZaSXN3ejZOU3VIUGVyYzdEaFJ1Iiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6Y29tcG9zaXRpb25zIiwiZ2V0Om11c2ljaWFucyJdfQ.0bSqBpbG_PJ1J6nGnDKLu6dUIgM6-YtVgXpCCKGU8qrnPMOOvtnt4HtPFRFmBP4vHdxldHD_hQSyXZLiYb_FgVCji1Ulvz1zc4hbUoXavvkALfOS_zpmBBy2jfwoeUeWXDN0X4mXuhcmxq-iTMmEF2hz4Cdv_j8JHYv6xcN0xD79bLno7vLqgji3JOE9n00X-he9mTdmURyd16uJnS5b7EX2mTwCMkXH8zxDawSwrEDZ1Ml4YYWEthcBLGf-C8e5CxOIaRpuxcAe4_ipuT3opyvt2LwPoBnFAqdDZK0oXpg4WOMO9JG-3xqKpFGEXF66Z8QoBtWWrU7SqsP7DAxS6A",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Director_test",
+			"item": [
+				{
+					"name": "/musicians/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maksim Karpov\",\r\n    \"age\": 32,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/musicians/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/plain",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Music story\",\r\n    \"release_date\": \"2021-11-06\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/compositions/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/create fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/plain",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"release_date\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/compositions/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/update/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Movie music\",\r\n    \"release_date\": \"2021-11-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/compositions/update/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians/update/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Aleksey Krapov\",\r\n    \"age\": \"32\",\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/musicians/update/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians/delete/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/musicians/delete/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/delete/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/compositions/delete/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/delete/<int:id> fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response must be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/compositions/delete/20000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"delete",
+								"20000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains musicians array\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.musicians).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/musicians",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains compositions array\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.compositions).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/compositions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians/create fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"age\": \"\",\r\n    \"gender\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/musicians/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians/delete/<int:id> fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/musicians/delete/20000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"delete",
+								"20000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/compositions/update/<int:id> fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Movie music\",\r\n    \"release_date\": \"2021-11-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/compositions/update/20000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compositions",
+								"update",
+								"20000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/musicians/update/<int:id> fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response must be JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Aleksey Krapov\",\r\n    \"age\": \"32\",\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/musicians/update/20000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"musicians",
+								"update",
+								"20000"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlkzbUQ0c19Tc3M5VGZXUHdReFgxMCJ9.eyJpc3MiOiJodHRwczovL2F0YXNoLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGY0NDk2MjhjYjIxMjAwNjk3MmM5N2MiLCJhdWQiOiJjYXN0aW5nIiwiaWF0IjoxNjI2NjIyOTcwLCJleHAiOjE2MjY2MzAxNzAsImF6cCI6IkZKTUVGaERCTHRzOEZaSXN3ejZOU3VIUGVyYzdEaFJ1Iiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6Y29tcG9zaXRpb25zIiwiZGVsZXRlOm11c2ljaWFuIiwiZ2V0OmNvbXBvc2l0aW9ucyIsImdldDptdXNpY2lhbnMiLCJwYXRjaDpjb21wb3NpdGlvbnMiLCJwYXRjaDptdXNpY2lhbiIsInBvc3Q6Y29tcG9zaXRpb25zIiwicG9zdDptdXNpY2lhbiJdfQ.LpBuU-W1ES60kO3wwAkJSENaBNq-fsOT-Hi_tguTQk2wz0evsYRGbnTZd4p_oBdrCaPDbhLgbIuiKXKEdy9TSaq2VeJF3HDLHZ8nVLhV1432Kit3xQSAwS4coUZ6nZxg1x0ssh4CdGHZezW00Hh_YmJdp6L4cekoKFSEhpa5aoC0EqB_uAz4eMcULArjZK-oHmS39GQ4mzwo7f2P0kLNJRjD-jJorarS9VMplA9t7pOr2ExKoEAkj5q2Nxiy4zeLtA9qGNu3Tcm8NaBTNB2nT5z6SnmYz94o8H0fz2USvQQ2x85wUmh3hnce4hKFH0gfucdBftKftox-q1wyIoYlPw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:5000"
+		}
+	]
+}

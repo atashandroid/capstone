@@ -3,9 +3,10 @@ from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
+from auth.auth import requires_auth, AuthError
 from models import setup_db, Composition, Musician
 
-from .auth.auth import AuthError, requires_auth
+
 
 
 def create_app(test_config=None):
@@ -22,7 +23,7 @@ def create_app(test_config=None):
 
     @app.route('/compositions', methods=['GET'])
     @requires_auth('get:compositions')
-    def get_compositions():
+    def get_compositions(payload):
         compositions = Composition.query.all()
 
         if not compositions:
@@ -35,7 +36,7 @@ def create_app(test_config=None):
 
     @app.route('/musicians', methods=['GET'])
     @requires_auth('get:musicians')
-    def get_musicians():
+    def get_musicians(payload):
         musicians = Musician.query.all()
 
         if not musicians:
@@ -48,7 +49,7 @@ def create_app(test_config=None):
 
     @app.route('/compositions/create', methods=['POST'])
     @requires_auth('post:compositions')
-    def add_new_composition():
+    def add_new_composition(payload):
         body = request.get_json()
 
         composition_title = body.get('title')
@@ -71,7 +72,7 @@ def create_app(test_config=None):
 
     @app.route('/musicians/create', methods=['POST'])
     @requires_auth('post:musician')
-    def add_new_musician():
+    def add_new_musician(payload):
         body = request.get_json()
         musician_name = body.get('name')
         musician_age = body.get('age')
@@ -93,7 +94,7 @@ def create_app(test_config=None):
 
     @app.route('/compositions/delete/<int:composition_id>', methods=['DELETE'])
     @requires_auth('delete:compositions')
-    def delete_composition(composition_id):
+    def delete_composition(payload, composition_id):
 
         delete_with_id = Composition.query.filter(Composition.id == composition_id).one_or_none()
 
@@ -112,7 +113,7 @@ def create_app(test_config=None):
 
     @app.route('/musicians/delete/<int:musician_id>', methods=['DELETE'])
     @requires_auth('delete:musician')
-    def delete_musician(musician_id):
+    def delete_musician(payload, musician_id):
 
         delete_with_id = Musician.query.filter(Musician.id == musician_id).one_or_none()
 
@@ -130,8 +131,8 @@ def create_app(test_config=None):
             abort(422)
 
     @app.route('/compositions/update/<int:composition_id>', methods=['PATCH'])
-    requires_auth('patch:compositions')
-    def update_composition(composition_id):
+    @requires_auth('patch:compositions')
+    def update_composition(payload, composition_id):
         composition = Composition.query.filter(Composition.id == composition_id).one_or_none()
         body = request.get_json()
         composition_title = body['title']
@@ -154,7 +155,7 @@ def create_app(test_config=None):
 
     @app.route('/musicians/update/<int:musician_id>', methods=['PATCH'])
     @requires_auth('patch:musician')
-    def update_musician(musician_id):
+    def update_musician(payload, musician_id):
 
         musician = Musician.query.filter(Musician.id == musician_id).one_or_none()
         body = request.get_json()
