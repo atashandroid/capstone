@@ -11,7 +11,7 @@ if not database_path:
     database_path = "postgresql://{}:{}@{}/{}".format('postgres', '12345', 'localhost:5432', database_name)
 
 db = SQLAlchemy()
-migrate = Migrate()
+# migrate = Migrate()
 
 
 def setup_db(app, database_path=database_path):
@@ -19,7 +19,7 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    migrate.init_app(app, db)
+    # migrate.init_app(app, db)
     db.create_all()
 
 
