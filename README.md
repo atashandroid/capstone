@@ -6,7 +6,7 @@ Udacity Full-Stack Developer Nanodegree Capstone Project
 This Musical Compositions is a company that responsible for creating musical compositions and managing and assigning musicians to those compositions.
 This is a server only application.
 
-##Auth0 account
+## Auth0 account
 ```
 AUTH0_DOMAIN = 'atash.us.auth0.com'
 ALGORITHMS = ['RS256']
@@ -30,7 +30,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlkzbUQ0c19Tc3M5VGZXUHdReFgxMCJ9.eyJ
 ```
 POSTman
 Exported collection with configured tokens can be found at: /Udacity_capstone_postman_collection.postman_collection.json
-####Login
+#### Login
 ```
 https://atash.us.auth0.com/authorize?audience=casting&response_type=token&client_id=FJMEFhDBLts8FZIswz6NSuHPerc7DhRu&redirect_uri=https://musicalcompositions.herokuapp.com/login-results
 ```
