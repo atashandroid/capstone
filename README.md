@@ -8,7 +8,7 @@ This is a server only application.
 
 ### Application Link
 ```
-Heroku Link: https://musicalcomposition.herokuapp.com
+Heroku Link: https://musicalcompositions.herokuapp.com
 Locally running: http://localhost:5000
 ```
 ## Application Stack
