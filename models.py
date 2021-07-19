@@ -8,7 +8,9 @@ from flask_migrate import Migrate
 database_path = os.environ.get('DATABASE_URL')
 if not database_path:
     database_name = "music"
-    database_path = "postgresql://{}:{}@{}/{}".format('postgres', '12345', 'localhost:5432', database_name)
+    # database_path = "postgresql://{}:{}@{}/{}".format('postgres', '12345', 'localhost:5432', database_name)
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    database_path = "sqlite:///{}".format(os.path.join(project_dir, database_name))
 
 db = SQLAlchemy()
 # migrate = Migrate()
@@ -28,7 +30,7 @@ class Composition(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    release_date = db.Column(db.DateTime)
+    release_date = db.Column(db.String)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -59,6 +61,7 @@ class Musician(db.Model):
     name = db.Column(db.String)
     age = db.Column(db.Integer)
     gender = db.Column(db.String)
+
 
     def __init__(self, name, age, gender):
         self.name = name
