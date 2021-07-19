@@ -8,7 +8,7 @@ This is a server only application.
 
 ## Auth0 account
 ```
-AUTH0_DOMAIN = 'atash.us.auth0.com'
+AUTH0_DOMAIN = '***.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'casting'
 ```
@@ -32,7 +32,7 @@ POSTman
 Exported collection with configured tokens can be found at: /Udacity_capstone_postman_collection.postman_collection.json
 #### Login
 ```
-https://atash.us.auth0.com/authorize?audience=casting&response_type=token&client_id=FJMEFhDBLts8FZIswz6NSuHPerc7DhRu&redirect_uri=https://musicalcompositions.herokuapp.com/login-results
+https://YOUR_DOMAIN/authorize?audience=API_IDENTIFIER&response_type=token&client_id=YOUR_CLIENT_ID&redirect_uri=https://musicalcompositions.herokuapp.com/login-results
 ```
 ### Application Link
 ```
